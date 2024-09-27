@@ -1,5 +1,4 @@
-# config.py
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
-SMTP_EMAIL = "your mail id"
-SMTP_APP_PASSWORD = "app password create by your email id"
+SMTP_EMAIL=your_smtp_email_here
+SMTP_PASSWORD=your_smtp_app_password_here
+SMTP_SERVER=your_smtp_server_here
+SMTP_PORT=your_smtp_port_here
