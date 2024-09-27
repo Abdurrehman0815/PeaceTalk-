@@ -6,12 +6,16 @@ from email.message import EmailMessage
 import config
 import google.generativeai as genai
 from flask import Flask, request, jsonify, flash,render_template, redirect, url_for, session
-from twilio.rest import Client
-
+from twilio.rest import Client
 from chat_db import init_db, log_chat, get_chat_history
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = '9a5b0c1d2f3e4a6b7c8d9e0f12345678'
+app.secret_key = 'your secret key'
 # Initialize the database
 init_db()
 
