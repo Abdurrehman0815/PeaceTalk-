@@ -15,13 +15,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'your secret key'
+app.secret_key = os.getenv('SECRET_KEY')
 # Initialize the database
 init_db()
 
 # Configure the Gemini API
-genai.configure(api_key="AIzaSyAEarUJgZEjZT8S1O8CkxME3asf0gEDu1I")
-
+genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 # Define the generation parameters
 generation_config = {
     "temperature": 1,
@@ -42,10 +41,10 @@ model = genai.GenerativeModel(
 chat_session = model.start_chat(history=[])
 
 # Twilio credentials
-account_sid = "AC529680e9d4f6a6b2f84fc2b5ae235f93"
-auth_token = "2f75963aab25d632ab3d6bf8e4367e46"
-twilio_number = "+14128306050"
-doctor_number = "+919344779755"
+account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+twilio_number = os.getenv('TWILIO_NUMBER')
+doctor_number = os.getenv('DOCTOR_NUMBER')
 
 client = Client(account_sid, auth_token)
 
@@ -351,5 +350,3 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-In this i want to change all modify the credintial and import the all api key password from the .env give me modify the code and .env file
