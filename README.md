@@ -4,7 +4,11 @@
 Peace Talk is a mental health chatbot designed for students, utilizing official government and national mental health data through the Gemini API. It provides multi-language support, voice input, and detects harmful behavior, automatically notifying childcare services with the user ID for review. Encrypted chat data is summarized securely for healthcare professionals, facilitating timely intervention. Additionally, the chatbot offers simple word games to help users shift their focus in distressing moments, making it an interactive and accessible mental health support tool.
 
 ## Prototype Video
-[![Watch the prototype video](prototype.mp4)](prototype.mp4)
+
+<video width="600" controls>
+  <source src="prototype.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Project Structure
 
