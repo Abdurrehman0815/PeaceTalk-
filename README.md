@@ -6,7 +6,7 @@ Peace Talk is a mental health chatbot designed for students, utilizing official 
 ## Prototype Video
 
 <video width="600" controls>
-  <source src="prototype.mp4" type="video/mp4">
+  <source src="./prototype.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
