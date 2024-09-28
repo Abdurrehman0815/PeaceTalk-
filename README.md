@@ -5,7 +5,10 @@ Peace Talk is a mental health chatbot designed for students, utilizing official 
 
 
 ## Prototype Video
-[![Watch the prototype video](prototype.mp4)](prototype.mp4)
+
+https://github.com/user-attachments/assets/c7045262-d021-43c0-8bef-116df41729b1
+
+
 
 ## Project Structure
 
