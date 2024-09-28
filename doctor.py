@@ -3,11 +3,16 @@ import sqlite3
 from sqlite3 import Error
 import google.generativeai as genai
 from encrypt import decrypt_message
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
 # Configure Google Generative AI
-genai.configure(api_key="AIzaSyB2FQSMPcyY1wnk7YpLlCmu-CMmKTDVKEA")
+genai.configure(api_key=os.getenv('DOCTOR_API_KEY'))
 
 # Generation config
 generation_config = {
