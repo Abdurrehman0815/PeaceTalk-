@@ -18,7 +18,7 @@ https://github.com/user-attachments/assets/c7045262-d021-43c0-8bef-116df41729b1
 - **`chat_db.py`** and **`chat_logs.db`**: Used for saving encrypted chat data.
 - **`users.db`**: Stores user information such as username, email ID, and password.
 - **`sense.db`**: Stores sensitive words used in chats (e.g., "killing," "suicide," "die").
-- **`doctor.py`**: Allows doctors to fetch and summarize user input and chatbot responses using the user ID.
+- **`helpline.py`**: Allows helplines to access user input and chatbot responses when sensitive words are detected in the chats, using the unique user ID.
 - **`static/`** and **`templates/`**: Directories used for storing HTML files used in the project.
 
 ## Features
