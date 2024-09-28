@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat History</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .container {
+            background: black;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: white;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #0099ff;
+            color: white;
+            border: 1px solid white;
+        }
+        .summary {
+            text-align: left;
+            font-size: 16px;
+            color: white;
+            margin-top: 20px;
+        }
+        .summary ul {
+            padding-left: 20px;
+        }
+        .summary li {
+            margin-bottom: 10px;
+            list-style-type: disc;
+        }
+        .paragraph {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chat History</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="user_id">User ID:</label>
+                <input type="text" id="user_id" name="user_id" class="form-control" required autocomplete="off">
+            </div>
+            <input type="submit" value="Get Chat History">
+        </form>
+
+        {% if summary %}
+            <h2>Summarized Chat Logs for User ID: {{ request.form['user_id'] }}</h2>
+            <div class="summary" id="summary-container">
+                <!-- JavaScript will populate this div -->
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const summaryText = {{ summary|tojson|safe }}; // Use |tojson to escape special characters
+            const summaryContainer = document.getElementById('summary-container');
+            
+            const parts = summaryText.split('*').filter(part => part.trim() !== '');
+
+            if (parts.length > 0) {
+                const ul = document.createElement('ul');
+                
+                parts.forEach((part, index) => {
+                    if (index === 0) {
+                        const paragraph = document.createElement('div');
+                        paragraph.className = 'paragraph';
+                        paragraph.textContent = part.trim();
+                        summaryContainer.appendChild(paragraph);
+                    } else {
+                        const li = document.createElement('li');
+                        li.textContent = part.trim();
+                        ul.appendChild(li);
+                    }
+                });
+
+                if (ul.childNodes.length > 0) {
+                    summaryContainer.appendChild(ul);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
